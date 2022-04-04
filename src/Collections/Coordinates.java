@@ -1,0 +1,25 @@
+package Collections;
+
+public class Coordinates {
+    private float x; //Поле не может быть null
+    private float y;
+
+    public Coordinates(float x, float y){
+        this.x = x;
+        this.y = y;
+    }
+    public float getX(){
+        return x;
+    }
+    public float getY(){
+        return y;
+    }
+
+    @Override
+    public String toString(){
+        String s = "";
+        s += "{\"x\" : " + Float.toString(x) + ", ";
+        s += "\"y\" : " + Float.toString(y) + "}";
+        return s;
+    }
+}
