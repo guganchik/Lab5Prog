@@ -2,7 +2,9 @@ package Commands;
 
 import App.CollectionManager;
 import java.util.Scanner;
-
+/**
+ * Команда Update
+ */
 public class Update implements ICommand{
 
     private final CollectionManager collectionManager;

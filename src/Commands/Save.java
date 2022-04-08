@@ -3,7 +3,9 @@ package Commands;
 import App.CollectionManager;
 import App.Storage;
 import java.util.Scanner;
-
+/**
+ * Команда Save
+ */
 public class Save implements ICommand {
 
     private final CollectionManager collectionManager;
@@ -18,7 +20,7 @@ public class Save implements ICommand {
 
     @Override
     public String toString() {
-        return "save TODO";
+        return "save - Save collection to file";
     }
 
 }

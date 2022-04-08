@@ -1,5 +1,8 @@
 package Collections;
 
+/**
+ *  Координаты исходного класса
+ */
 public class Coordinates {
     private float x; //Поле не может быть null
     private float y;

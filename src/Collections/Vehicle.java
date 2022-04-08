@@ -4,6 +4,10 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+
+/**
+ * Класс, элементы которого хранятся в коллекции
+ */
 public class Vehicle implements java.lang.Comparable {
     private int id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
@@ -16,13 +20,13 @@ public class Vehicle implements java.lang.Comparable {
     
     /**
      * constructor, just set fields
-     * @param id
-     * @param name                   имя
-     * @param coordinates            координаты
-     * @param enginePower            мощность двигателя
-     * @param capacity               емкость ТС
-     * @param distanceTravelled      Пробег
-     * @param type                   Тип ТС
+     * @param id                        Идентификатор
+     * @param name                      имя
+     * @param coordinates               координаты
+     * @param enginePower               мощность двигателя
+     * @param capacity                  емкость ТС
+     * @param distanceTravelled         Пробег
+     * @param type                      Тип ТС
      */
 
     public Vehicle(int id, String name, Coordinates coordinates, float enginePower, Long capacity, Double distanceTravelled, VehicleType type){

@@ -6,7 +6,9 @@ import Collections.VehicleType;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
-
+/**
+ * Команда ExecuteScript
+ */
 public class ExecuteScript implements ICommand{
     private final CollectionManager collectionManager;
     private final CommandsList commandsList;
@@ -25,39 +27,16 @@ public class ExecuteScript implements ICommand{
 
             while (finput.hasNext()) {
                 String command = finput.nextLine();
-                //System.out.println(command);
                 commandsList.execute(finput, command, true);
             }
-            
-            
-            //System.out.println("args: " + args[0]);
-            
-            //collectionManager.execute_script(filename);
         } catch (Exception e) {
-            System.out.println("TODO");
+            System.out.println("Couldn't find script file!");
         }
 
     }
-    
-
-/**    
-    public void execute_script(String filename) {
-        Path path = Paths.get(filename);
-        try {
-            Scanner input = new Scanner(path);
-
-            while (true) {
-                String command = input.nextLine();
-                System.out.println(command);
-            }
-        } catch(IOException e) {
-            e.printStackTrace();
-        }
-    }
-*/    
-    
-    
-    
-
+@Override
+public String toString() {
+    return "execute_script file_name - Read and execute the script from the specified file. The script contains commands in the same form in which they are entered by the user in interactive mode";
+}
 
 }

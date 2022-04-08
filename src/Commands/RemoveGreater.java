@@ -2,7 +2,9 @@ package Commands;
 
 import App.CollectionManager;
 import java.util.Scanner;
-
+/**
+ * Команда RemoveGreater
+ */
 public class RemoveGreater implements ICommand {
     private final CollectionManager collectionManager;
     public RemoveGreater(CollectionManager collectionManager) {
@@ -16,7 +18,7 @@ public class RemoveGreater implements ICommand {
 
     @Override
     public String toString() {
-        return "add_if_max {element} - Add a new element to the collection if its value is greater than the value of the largest element in this collection";
+        return "remove_greater {element} - Remove from the collection all elements greater than the given";
     }
 
 }

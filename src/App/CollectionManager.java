@@ -10,10 +10,11 @@ import java.nio.file.Paths;
 
 import java.util.*;
 
+/**
+ * Класс управления коллекцией. Здесь происходят все изменения коллекции.
+ */
 public class CollectionManager {
-    
-    
-            
+
     private TreeSet<Vehicle> collection;
     static Date collectionDate = new Date();
     private Integer vehicleId = 0;
@@ -33,14 +34,24 @@ public class CollectionManager {
         return storage.read();
     }
 
+    /**
+     * Запись в файл
+     */
     public void save() {
         storage.write();
     }
-    
+
+    /**
+     *
+     * @return Коллекция
+     */
     public TreeSet<Vehicle> getCollection() {
         return collection;
     }
-    
+
+    /**
+     * Информация о коллекции
+     */
     public void info() {
         Calendar calendar = Calendar.getInstance();
         try {
@@ -53,6 +64,9 @@ public class CollectionManager {
                         "Amount of elements - " + collection.size());
     }
 
+    /**
+     * Вывести элементы коллекции в порядке возрастания
+     */
     public void print_ascending() {
         Set<Vehicle> orderTreeSet = new TreeSet<Vehicle>(Comparator.comparingDouble(Vehicle::getId));
         orderTreeSet.addAll(collection);
@@ -61,26 +75,41 @@ public class CollectionManager {
         }
 
     }
-
+    /**
+     * Вывести элементы коллекции
+     */
     public void show() {
         for (Vehicle vehicle: collection) {
             System.out.println(vehicle.toString());
         }
     }
 
+    /**
+     * Очистить коллекцию
+     */
     public void clear() {
         collection.clear();
         System.out.println("Cleared the collection");
     }
 
+    /**
+     * Новое Id для следующего эл-та
+     * @return новый Id
+     */
     public int getNewId() {
         return ++vehicleId;
     }
 
+    /**
+     * Добавить элемент в коллекцию
+     */
     public void add(Vehicle v) {
         collection.add(v);
     }
 
+    /**
+     * Добавить элемент в коллекцию если  его EnginePower и Capacity больше максимального значения данных полей в этой коллекции
+     */
     public void add_if_max(Vehicle element) {Iterator<Vehicle> itr = collection.iterator();
         while (itr.hasNext()) {
             Vehicle v = itr.next();
@@ -94,6 +123,9 @@ public class CollectionManager {
         }
     }
 
+    /**
+     * Обновить элемент по его id
+     */
     public boolean update_by_id(Integer updateId) {
         for(Vehicle v: collection) {
             if (v.getId() == updateId) {
@@ -104,6 +136,9 @@ public class CollectionManager {
         return false;
     }
 
+    /**
+     * Удалить элемент по его id
+     */
     public boolean remove_by_id(Integer deleteId) {
         for(Vehicle v: collection) {
             if (v.getId() == deleteId) {
@@ -114,14 +149,23 @@ public class CollectionManager {
         return false;
     }
 
+    /**
+     * Удалить элементы больше заданного
+     */
     public void remove_greater(Vehicle element) {
         collection.removeIf(v -> v.getDistanceTravelled() > element.getDistanceTravelled() && v.getCapacity() > element.getCapacity() && v.getEnginePower() > element.getEnginePower());
     }
 
+    /**
+     * Удалить элементы меньше заданного
+     */
     public void remove_lower(Vehicle element) {
         collection.removeIf(v -> v.getDistanceTravelled() < element.getDistanceTravelled() && v.getCapacity() < element.getCapacity() && v.getEnginePower() < element.getEnginePower());
     }
 
+    /**
+     * Вывести элемент с максимальным Id
+     */
     public void max_by_id() {
         Set<Vehicle> orderTreeSet = new TreeSet<Vehicle>(Comparator.comparingDouble(Vehicle::getId));
         orderTreeSet.addAll(collection);
@@ -135,6 +179,9 @@ public class CollectionManager {
         }
     }
 
+    /**
+     * Вывести элементы индекс поля Type которого больше чем индекс введеного Type
+     */
     public void filter_greater_than_type(String vehicleType) {
         int ord = VehicleType.valueOf(vehicleType).ordinal();
         for(Vehicle v : collection) {

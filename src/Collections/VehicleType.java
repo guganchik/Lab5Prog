@@ -1,5 +1,7 @@
 package Collections;
-
+/**
+ * Enum для хранения Типа исходного класса
+ */
 public enum VehicleType {
     HELICOPTER,
     SHIP,

@@ -2,7 +2,9 @@ package Commands;
 
 import App.CollectionManager;
 import java.util.Scanner;
-
+/**
+ * Команда MaxById
+ */
 public class MaxById implements ICommand{
 
     private final CollectionManager collectionManager;
@@ -17,7 +19,7 @@ public class MaxById implements ICommand{
 
     @Override
     public String toString() {
-        return "add {element} - Add a new element to the collection";
+        return "max_by_id - Display any object from the collection whose id field value is the maximum";
     }
 
 }

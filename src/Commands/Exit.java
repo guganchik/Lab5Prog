@@ -1,7 +1,9 @@
 package Commands;
 
 import java.util.Scanner;
-
+/**
+ * Команда Exit
+ */
 public class Exit implements ICommand{
     public void execute(Scanner input, String args[], boolean silent) {
         System.exit(0);

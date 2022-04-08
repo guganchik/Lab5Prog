@@ -3,7 +3,9 @@ package Commands;
 import App.CollectionManager;
 import Collections.VehicleType;
 import java.util.Scanner;
-
+/**
+ * Команда FilterGreaterThanType
+ */
 public class FilterGreaterThanType implements ICommand{
     private final CollectionManager collectionManager;
 
@@ -24,5 +26,9 @@ public class FilterGreaterThanType implements ICommand{
 
     }
 
+    @Override
+    public String toString() {
+        return "filter_greater_than_type type - Display elements whose type field value is greater than the given one";
+    }
 
 }

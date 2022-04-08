@@ -8,6 +8,9 @@ import java.io.BufferedReader;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -15,11 +18,7 @@ import java.util.TreeSet;
 
 public class Storage {
     /**
-     * \n - 10
-     * \r - 13
-     * Mac - \r
-     * Unix|Linux - \n
-     * Windows - \r\n
+     * Класс
      */
 
 
@@ -35,14 +34,21 @@ public class Storage {
         this.filename = filename;
     }
 
+    /**
+     * Метод чтения из csv, записывает в коллекцию элементы из файла при запуске программы
+     * @return максимальный Id
+     */
     public int read() {
         int lastId = -1;
         collection.clear();
         try {
+            Path path = Paths.get(filename);
+            if (!Files.exists(path)) {
+                return lastId;
+            }
             FileReader fileReader= new FileReader(filename);
 
             int data = fileReader.read();
-            //System.out.println(data);
             String line = "";
             boolean newLine = false;
             
@@ -56,9 +62,6 @@ public class Storage {
 
                 if (newLine) {
                     String[] arr = line.split(SPLITTER);
-                    //System.out.println(line);
-                    //System.out.println(arr[0] + ", " + arr[1] + ", " + arr[2]);
-
                     Calendar calendar = Calendar.getInstance();
                     try {
                         calendar.setTime(timeFormat.parse(arr[4]));
@@ -92,8 +95,9 @@ public class Storage {
     }
 
 
-
-
+    /**
+     * Метод записи в файл csv (для команды Save)
+     */
     public void write() {
         BufferedOutputStream bufferedOutputStream = null;
         FileOutputStream fileOutputStream = null;

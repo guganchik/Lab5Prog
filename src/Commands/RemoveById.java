@@ -2,7 +2,9 @@ package Commands;
 
 import App.CollectionManager;
 import java.util.Scanner;
-
+/**
+ * Команда RemoveById
+ */
 public class RemoveById implements ICommand {
     private final CollectionManager collectionManager;
 

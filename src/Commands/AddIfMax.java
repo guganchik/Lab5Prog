@@ -5,7 +5,9 @@ import Collections.Coordinates;
 import Collections.Vehicle;
 import Collections.VehicleType;
 import java.util.Scanner;
-
+/**
+ * Команда AddIfMax
+ */
 public class AddIfMax implements ICommand {
 
     private final CollectionManager collectionManager;

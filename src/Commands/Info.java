@@ -2,7 +2,9 @@ package Commands;
 
 import App.CollectionManager;
 import java.util.Scanner;
-
+/**
+ * Команда Info
+ */
 public class Info implements ICommand{
     private final CollectionManager collectionManager;
 

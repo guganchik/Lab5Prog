@@ -6,6 +6,9 @@ import Collections.Vehicle;
 import Collections.VehicleType;
 import java.util.Scanner;
 
+/**
+ * Команда Add
+ */
 public class Add implements ICommand{
     private final CollectionManager collectionManager;
 

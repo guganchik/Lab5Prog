@@ -4,6 +4,10 @@ import Collections.*;
 
 import java.util.Scanner;
 
+/**
+ * Класс в котором обрабатывается входящий поток для Команд работающих с полями аргумента
+ * (Создание элемента коллекции)
+ */
 public class Input {
     
     private String name;

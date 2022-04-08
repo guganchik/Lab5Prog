@@ -6,6 +6,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
 
+/**
+ * Класс, который хранит все возможные команды и вызывает их по ключу.
+ */
 public class CommandsList {
     public static final HashMap<String, ICommand> commands = new HashMap<>();
     private CollectionManager collectionManager;
