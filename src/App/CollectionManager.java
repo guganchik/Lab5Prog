@@ -89,7 +89,6 @@ public class CollectionManager {
      */
     public void clear() {
         collection.clear();
-        System.out.println("Cleared the collection");
     }
 
     /**

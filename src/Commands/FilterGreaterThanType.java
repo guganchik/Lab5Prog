@@ -15,13 +15,22 @@ public class FilterGreaterThanType implements ICommand{
 
     @Override
     public void execute(Scanner input, String[] args, boolean silent) {
-        String vehicleType = args[0];
+
 
         try {
+            String vehicleType = args[0];
             VehicleType.valueOf(vehicleType);
             collectionManager.filter_greater_than_type(vehicleType);
-        } catch (Exception e) {
-            System.out.println("This type of vehicle does not exist.");
+        }
+        catch (ArrayIndexOutOfBoundsException e){
+            if(!silent) {
+                System.out.println("Invalid input! Type not entered");
+            }
+        }
+        catch (Exception e) {
+            if(!silent) {
+                System.out.println("This type of vehicle does not exist.");
+            }
         }
 
     }

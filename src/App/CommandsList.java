@@ -45,7 +45,9 @@ public class CommandsList {
         if (commands.containsKey(commandName)) {
             commands.get(commandName).execute(input, args, silent);
         } else {
-            System.out.println("Enter the command again!");
+            if(!silent) {
+                System.out.println("Enter the command again!");
+            }
         }
     }
 }

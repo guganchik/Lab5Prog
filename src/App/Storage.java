@@ -3,11 +3,7 @@ import Collections.Coordinates;
 import Collections.Vehicle;
 import Collections.VehicleType;
 
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -46,7 +42,12 @@ public class Storage {
             if (!Files.exists(path)) {
                 return lastId;
             }
+
+
             FileReader fileReader= new FileReader(filename);
+
+
+
 
             int data = fileReader.read();
             String line = "";
@@ -62,6 +63,10 @@ public class Storage {
 
                 if (newLine) {
                     String[] arr = line.split(SPLITTER);
+                    if (arr.length < 8){
+                        System.out.println("incorrect Data in file!");
+                        System.exit(1);
+                    }
                     Calendar calendar = Calendar.getInstance();
                     try {
                         calendar.setTime(timeFormat.parse(arr[4]));
@@ -72,10 +77,32 @@ public class Storage {
                     if (id > lastId) {
                         lastId = id;
                     }
-                    
+
+                    for (int i = 0; i < arr.length; i++) {
+                          if (arr[i].equals("")){
+                              System.out.println("The numeric fields of the element are not entered correctly!");
+                              System.exit(1);
+                          }
+                    }
+
+                    Double distanceTravelled = null;
+                    if (!arr[7].equals("")) {
+                        distanceTravelled = Double.parseDouble(arr[7]);
+
+                    }
+
                     Coordinates coordinates = new Coordinates(Float.parseFloat(arr[2]), Float.parseFloat(arr[3]));
-                    Vehicle v = new Vehicle(Integer.parseInt(arr[0]), arr[1], coordinates, calendar.getTime(), Float.parseFloat(arr[5]), Long.parseLong(arr[6]),Double.parseDouble(arr[7]), VehicleType.valueOf(arr[8]));
-                    collection.add(v);
+                    try {
+                        Vehicle v = new Vehicle(Integer.parseInt(arr[0]), arr[1], coordinates, calendar.getTime(), Float.parseFloat(arr[5]), Long.parseLong(arr[6]),distanceTravelled, VehicleType.valueOf(arr[8]));
+                        collection.add(v);
+                    } catch (NumberFormatException e) {
+                        System.out.println("The numeric fields of the element are not entered correctly!");
+                        System.exit(1);
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("VehicleType field entered incorrectly");
+                        System.exit(1);
+                    }
+
 
                     newLine = false;
                     line = "";
@@ -110,18 +137,19 @@ public class Storage {
 
             String line;
             for (Vehicle v : collection) {
-                line = v.getId() + SPLITTER
-                        + v.getName() + SPLITTER
-                        + v.getCoordinates().getX() + SPLITTER
-                        + v.getCoordinates().getY() + SPLITTER
-                        + Const.timeFormat.format(v.getCreationDate()) + SPLITTER
-                        + v.getEnginePower() + SPLITTER
-                        + v.getCapacity() + SPLITTER
-                        + v.getDistanceTravelled() + SPLITTER
-                        + v.getType()
-                        + EOL;
 
-                bufferedOutputStream.write(line.getBytes());
+                    line = v.getId() + SPLITTER
+                            + v.getName() + SPLITTER
+                            + v.getCoordinates().getX() + SPLITTER
+                            + v.getCoordinates().getY() + SPLITTER
+                            + Const.timeFormat.format(v.getCreationDate()) + SPLITTER
+                            + v.getEnginePower() + SPLITTER
+                            + v.getCapacity() + SPLITTER
+                            + (v.getDistanceTravelled()==null?"":v.getDistanceTravelled()) + SPLITTER
+                            + v.getType()
+                            + EOL;
+
+                    bufferedOutputStream.write(line.getBytes());
             }
             bufferedOutputStream.flush();
             bufferedOutputStream.close();
