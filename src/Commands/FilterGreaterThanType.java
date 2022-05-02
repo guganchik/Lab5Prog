@@ -20,7 +20,12 @@ public class FilterGreaterThanType implements ICommand{
         try {
             String vehicleType = args[0];
             VehicleType.valueOf(vehicleType);
-            collectionManager.filter_greater_than_type(vehicleType);
+
+            if(collectionManager.filter_greater_than_type(vehicleType) && !silent){
+                if(!silent){System.out.println("Operation success (FilterGreaterThanType)");}
+            } else {
+                if(!silent){System.out.println("Operation error (FilterGreaterThanType)");}
+            }
         }
         catch (ArrayIndexOutOfBoundsException e){
             if(!silent) {

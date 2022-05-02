@@ -12,7 +12,12 @@ public class Show implements ICommand {
         this.collectionManager = collectionManager;
     }
     public void execute(Scanner input, String args[], boolean silent) {
-        collectionManager.show();
+
+        if(collectionManager.show()) {
+            if(!silent){System.out.println("Operation success (Show)");}
+        } else {
+           if(!silent){System.out.println("Operation error (Show)");}
+        }
     }
 
     @Override

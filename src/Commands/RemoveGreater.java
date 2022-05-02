@@ -13,7 +13,11 @@ public class RemoveGreater implements ICommand {
 
     public void execute(Scanner input, String args[], boolean silent) {
         Input vInput = new Input(input, silent);
-        collectionManager.remove_greater(vInput.resultElement(collectionManager.getNewId()));
+        if(collectionManager.remove_greater(vInput.resultElement(collectionManager.getNewId()))){
+            if(!silent){System.out.println("Operation success (RemoveGreater)");}
+        } else {
+            if(!silent){System.out.println("Operation error (RemoveGreater)");}
+        }
     }
 
     @Override

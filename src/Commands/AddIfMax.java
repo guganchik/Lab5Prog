@@ -18,7 +18,11 @@ public class AddIfMax implements ICommand {
 
     public void execute(Scanner input, String args[], boolean silent) {
        Input vInput = new Input(input, silent);
-        collectionManager.add_if_max(vInput.resultElement(collectionManager.getNewId()));
+        if(collectionManager.add_if_max(vInput.resultElement(collectionManager.getNewId()))){
+            if(!silent){System.out.println("Operation success (AddIfMax)");}
+        } else {
+            if(!silent){System.out.println("Operation error (AddIfMax)");}
+        }
     }
 
     @Override

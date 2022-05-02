@@ -18,7 +18,11 @@ public class Add implements ICommand{
 
     public void execute(Scanner input, String args[], boolean silent) {
         Input vInput = new Input(input, silent);
-        collectionManager.add(vInput.resultElement(collectionManager.getNewId()));
+        if (collectionManager.add(vInput.resultElement(collectionManager.getNewId()))) {
+            if(!silent){System.out.println("Operation success (Add)");}
+        } else {
+            if(!silent){System.out.println("Operation error (Add)");}
+        }
     }
 
     @Override

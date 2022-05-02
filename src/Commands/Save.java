@@ -15,7 +15,11 @@ public class Save implements ICommand {
     }
 
     public void execute(Scanner input, String args[], boolean silent) {
-        collectionManager.save();
+        if(collectionManager.save()){
+            if(!silent){System.out.println("Operation success (Save)");}
+        } else {
+            if(!silent){System.out.println("Operation error (Save)");}
+        }
     }
 
     @Override

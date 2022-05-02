@@ -14,7 +14,11 @@ public class MaxById implements ICommand{
     }
 
     public void execute(Scanner input, String args[], boolean silent) {
-        collectionManager.max_by_id();
+        if(collectionManager.max_by_id() ){
+            if(!silent){System.out.println("Operation success (MaxById)");}
+        } else {
+            if(!silent){System.out.println("Operation error (MaxById)");}
+        }
     }
 
     @Override

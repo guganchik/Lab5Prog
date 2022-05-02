@@ -14,9 +14,11 @@ public class Clear implements ICommand{
     }
 
     public void execute (Scanner input, String args[], boolean silent){
-        collectionManager.clear();
-        if(!silent){
-            System.out.println("Cleared the collection");
+
+        if (collectionManager.clear() && !silent) {
+            if(!silent){System.out.println("Operation success (Clear)");}
+        } else {
+            if(!silent){System.out.println("Operation error (Clear)");}
         }
     }
 

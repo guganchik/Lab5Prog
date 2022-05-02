@@ -19,7 +19,9 @@ public class Update implements ICommand{
                 System.out.println("Object with id = " + id + " not found!");
             } else {
                 Input vInput = new Input(input, silent);
-                collectionManager.add(vInput.resultElement(collectionManager.getNewId()));
+                if(collectionManager.add(vInput.resultElement(collectionManager.getNewId()))) {
+                    if(!silent){System.out.println("Operation success (Show)");}
+                }
             }
         }
         catch (ArrayIndexOutOfBoundsException e){

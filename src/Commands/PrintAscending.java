@@ -12,7 +12,12 @@ public class PrintAscending implements ICommand{
         this.collectionManager = collectionManager;
     }
     public void execute(Scanner input, String args[], boolean silent) {
-        collectionManager.print_ascending();
+        if(collectionManager.print_ascending()){
+            if(!silent){System.out.println("Operation success (PrintAscending)");}
+        } else {
+            if(!silent){System.out.println("Operation error (PrintAscending)");}
+        }
+
     }
 
     @Override

@@ -6,6 +6,7 @@ import java.util.Scanner;
  */
 public class Exit implements ICommand{
     public void execute(Scanner input, String args[], boolean silent) {
+        System.out.println("System exit");
         System.exit(0);
     }
 

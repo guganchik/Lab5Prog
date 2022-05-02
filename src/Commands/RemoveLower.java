@@ -13,7 +13,11 @@ public class RemoveLower implements ICommand{
 
     public void execute(Scanner input, String args[], boolean silent) {
         Input vInput = new Input(input, silent);
-        collectionManager.remove_lower(vInput.resultElement(collectionManager.getNewId()));
+        if(collectionManager.remove_lower(vInput.resultElement(collectionManager.getNewId()))){
+            if(!silent){System.out.println("Operation success (RemoveLower)");}
+        } else {
+            if(!silent){System.out.println("Operation error (RemoveLower)");}
+        }
     }
 
     @Override

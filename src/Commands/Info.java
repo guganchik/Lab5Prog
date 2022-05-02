@@ -13,7 +13,12 @@ public class Info implements ICommand{
     }
 
     public void execute (Scanner input, String args[], boolean silent){
-        collectionManager.info();
+        if(collectionManager.info()){
+            if(!silent){System.out.println("Operation success (Info)");}
+        } else {
+            if(!silent){System.out.println("Operation error (Info)");}
+        }
+
     }
 
     @Override
